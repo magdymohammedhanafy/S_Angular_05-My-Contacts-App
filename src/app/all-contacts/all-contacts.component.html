@@ -1,0 +1,34 @@
+<app-filtration-component
+  (selectedValue)="onSelect($event)"
+></app-filtration-component>
+
+<h1>Contact List</h1>
+<div class="new-contact">
+  <label for="name">Enter contact name</label>
+  <input #nameValue type="text" name="name" />
+  <label for="phoneNumber">Enter phone No</label>
+  <input #numberValue type="text" name="phoneNumber" />
+  <label for="email">Enter Email</label>
+  <input #emailValue type="email" name="email" />
+  <button (click)="add(nameValue.value, numberValue.value, emailValue.value)">
+    Add New Contact
+  </button>
+</div>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Phone No</th>
+    <th>Email</th>
+    <th>Edit contact</th>
+    <th>Delete Contact</th>
+  </thead>
+  <tbody *ngFor="let contact of contacts">
+    <td>{{ contact.name }}</td>
+    <td>{{ contact.phoneNumber }}</td>
+    <td>{{ contact.email }}</td>
+    <td><button>Edit contact</button></td>
+    <td>
+      <button (click)="deleteContact(contact.email)">Delete contact</button>
+    </td>
+  </tbody>
+</table>
