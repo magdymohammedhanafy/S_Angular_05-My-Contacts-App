@@ -9,8 +9,12 @@ import { Contact } from '../models/contact';
 })
 export class AllContactsComponent {
   contacts?: Contact[];
+  foundContacts?: Contact[];
+  typeOfSearch: number = 1;
+  searchKey!: String;
 
   constructor() {
+    this.foundContacts = this.contacts;
     this.contacts = [
       {
         name: 'magdy',
@@ -44,6 +48,24 @@ export class AllContactsComponent {
     });
   }
   onSelect(sele: number) {
-    console.log(sele);
+    this.typeOfSearch = sele;
+    console.log(this.typeOfSearch);
+  }
+  searchingKey(value: any) {
+    this.searchKey = value;
+    //console.log(this.searchKey);
+    if (this.typeOfSearch == 1) {
+      this.foundContacts = this.contacts?.filter(
+        (contact) => contact.name == value
+      );
+    } else if (this.typeOfSearch == 2) {
+      this.foundContacts = this.contacts?.filter(
+        (contact) => contact.phoneNumber == value
+      );
+    } else if (this.typeOfSearch == 0) {
+      this.foundContacts = this.contacts;
+    }
+
+    console.log(this.foundContacts);
   }
 }

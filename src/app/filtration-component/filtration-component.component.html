@@ -4,4 +4,5 @@
   </option>
 </select>
 
-<input type="text" />
+<input #seachValue type="text" name="search" />
+<button (click)="clickOnSearch(seachValue.value)">search</button>
