@@ -10,11 +10,10 @@ import { Contact } from '../models/contact';
 export class AllContactsComponent {
   contacts?: Contact[];
   foundContacts?: Contact[];
-  typeOfSearch: number = 1;
+  typeOfSearch: number = 0;
   searchKey!: String;
 
   constructor() {
-    this.foundContacts = this.contacts;
     this.contacts = [
       {
         name: 'magdy',
@@ -32,6 +31,7 @@ export class AllContactsComponent {
         email: 'sayed@gmail.com',
       },
     ];
+    this.foundContacts = this.contacts;
   }
   deleteContact(filtered: any) {
     this.contacts?.splice(
@@ -53,7 +53,6 @@ export class AllContactsComponent {
   }
   searchingKey(value: any) {
     this.searchKey = value;
-    //console.log(this.searchKey);
     if (this.typeOfSearch == 1) {
       this.foundContacts = this.contacts?.filter(
         (contact) => contact.name == value

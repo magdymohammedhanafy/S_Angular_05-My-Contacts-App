@@ -17,7 +17,6 @@ export class FiltrationComponentComponent {
     this.selectedValue = new EventEmitter<number>();
     this.searching = new EventEmitter<String>();
     this.selectors = [
-      { title: 'All', id: 0 },
       { title: 'Filtration by contact name ', id: 1 },
       { title: 'Filtration by contact number ', id: 2 },
     ];
